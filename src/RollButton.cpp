@@ -21,7 +21,13 @@ bool RollButton::ButtonClick()
 	{
 		if (!m_isClicked)
 		{
-			//Game::Instance()->changeSceneState(LEVEL1_SCENE);
+			randNums();
+
+			r1 = getR1();
+			r2 = getR2();
+
+			std::cout << "R1: " << getR1() << std::endl;
+			std::cout << "R2: " << getR2() << std::endl;
 			m_isClicked = true;
 		}
 		return true;

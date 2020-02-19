@@ -14,6 +14,8 @@ public:
 	bool ButtonClick() override;
 private:
 	bool m_isClicked;
+
+	int r1, r2;
 };
 
-#endif /* defined (__START_BUTTON__) */
+#endif /* defined (__ROLL_BUTTON__) */

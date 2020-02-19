@@ -104,3 +104,17 @@ void GameObject::setAcceleration(glm::vec2 newAcceleration)
 {
 	m_acceleration = newAcceleration;
 }
+
+// Dice Roller
+void GameObject::randNums() {
+	r1 = rand() % 6 + 1;
+	r2 = rand() % 6 + 1;
+}
+
+int GameObject::getR1() {
+	return r1;
+}
+
+int GameObject::getR2() {
+	return r2;
+}

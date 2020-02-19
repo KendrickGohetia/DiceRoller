@@ -44,6 +44,10 @@ public:
 	void setType(GameObjectType newType);
 	void setState(SteeringState newState);
 	void setAcceleration(glm::vec2 newAcceleration);
+	void randNums();
+
+	int getR1();
+	int getR2();
 
 private:
 	// transform variables
@@ -69,6 +73,8 @@ private:
 	bool m_isColliding;
 	GameObjectType m_type;
 	SteeringState m_state;
+
+	int r1, r2;
 };
 
 #endif
