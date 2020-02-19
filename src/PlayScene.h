@@ -1,3 +1,37 @@
+#pragma once
+#ifndef __PLAY_SCENE__
+#define __PLAY_SCENE__
+
+#include "Scene.h"
+
+class PlayScene : public Scene
+{
+public:
+	PlayScene();
+	~PlayScene();
+
+	void draw() override;
+	void update() override;
+	void clean() override;
+	void handleEvents() override;
+	void start() override;
+
+	// getters
+	glm::vec2 getMousePosition();
+
+private:
+	// game objects
+
+
+
+	// private data member
+	glm::vec2 m_mousePosition;
+
+
+};
+
+#endif /* defined (__LEVEL_1_SCENE__) */
+
 //#pragma once
 //#ifndef __PLAY_SCENE__
 //#define __PLAY_SCENE__
@@ -29,7 +63,7 @@
 //	void setTargetPosition(glm::vec2 newPosition);
 //
 //	// Pathfinding functions
-//	Tile* getTile(int col, int row);
+//	/*Tile* getTile(int col, int row);*/
 //
 //
 //	glm::vec2 getGoalLocation();
@@ -38,11 +72,11 @@
 //	void resetClosedAndOpen();
 //private:
 //	// GameObjects
-//	Ship m_ship;
-//	std::vector<Mine> m_pMines;
-//	Target m_pTarget;
-//	Label* m_pLabel;
-//	Planet m_planet;
+//	///*Ship m_ship;
+//	//std::vector<Mine> m_pMines;*/
+//	//Target m_pTarget;
+//	//Label* m_pLabel;
+//	//Planet m_planet;
 //
 //	// utility functions for ship control
 //	void m_createShips();
@@ -66,14 +100,14 @@
 //	const int m_colSize = Config::COL_NUM;
 //	const int m_tileSize = Config::TILE_SIZE;
 //
-//	Tile* m_grid[Config::COL_NUM ][Config::ROW_NUM]; 
+//	/*Tile* m_grid[Config::COL_NUM ][Config::ROW_NUM]; */
 //
 //	glm::vec2 m_goalLocation;
 //	bool m_moveAlongPath = false;
 //	int m_pathLength = 0;
 //
-//	std::vector<Tile* > m_pOpen;
-//	std::vector<Tile* > m_pClosed;
+//	/*std::vector<Tile* > m_pOpen;
+//	std::vector<Tile* > m_pClosed;*/
 //
 //	// utility functions for tile and grid
 //	void m_createGrid();

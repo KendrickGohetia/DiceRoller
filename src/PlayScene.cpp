@@ -1,12 +1,144 @@
-//#include "PlayScene.h"
-//#include "Game.h"
-//#include <ctime>
-//#include "GLM/gtx/string_cast.hpp"
-//#include <algorithm>
-//#include <iomanip>
+#include "PlayScene.h"
+#include "Game.h"
+#include <ctime>
+#include "GLM/gtx/string_cast.hpp"
+#include <algorithm>
+#include <iomanip>
+#include "Level1Scene.h"
+#include "Game.h"
+#include <iostream>
+
+PlayScene::PlayScene()
+{
+	start();
+}
+
+PlayScene::~PlayScene()
+{
+}
+
+void PlayScene::draw()
+{
+
+}
+
+void PlayScene::update()
+{
+
+
+}
+
+void PlayScene::clean()
+{
+}
+
+void PlayScene::handleEvents()
+{
+	int wheel = 0;
+
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			TheGame::Instance()->quit();
+			break;
+		case SDL_MOUSEMOTION:
+			m_mousePosition.x = event.motion.x;
+			m_mousePosition.y = event.motion.y;
+			break;
+
+		case SDL_MOUSEBUTTONDOWN:
+			switch (event.button.button)
+			{
+			case SDL_BUTTON_LEFT:
+
+				break;
+			}
+
+			break;
+		case SDL_MOUSEBUTTONUP:
+			switch (event.button.button)
+			{
+			case SDL_BUTTON_LEFT:
+
+				break;
+			}
+			break;
+		case SDL_MOUSEWHEEL:
+			wheel = event.wheel.y;
+			break;
+		case SDL_KEYDOWN:
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_ESCAPE:
+				TheGame::Instance()->quit();
+				break;
+			case SDLK_1:
+				TheGame::Instance()->changeSceneState(SceneState::START_SCENE);
+				break;
+			case SDLK_2:
+				TheGame::Instance()->changeSceneState(SceneState::END_SCENE);
+				break;
+
+
+				/************************************************************************/
+			case SDLK_w:
+
+				break;
+			case SDLK_s:
+
+				break;
+			case SDLK_a:
+
+				break;
+			case SDLK_d:
+
+				break;
+			}
+
+			break;
+		case SDL_KEYUP:
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_w:
+
+				break;
+
+			case SDLK_s:
+
+				break;
+
+			case SDLK_a:
+
+				break;
+			case SDLK_d:
+
+				break;
+			}
+
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void PlayScene::start()
+{
+
+}
+
+glm::vec2 PlayScene::getMousePosition()
+{
+	return m_mousePosition;
+}
+
+
 //
 //
-//// Pathfinding & Steering functions ***********************************************
+// Pathfinding & Steering functions ***********************************************
 //
 //glm::vec2 PlayScene::getTargetPosition()
 //{
@@ -43,7 +175,7 @@
 //
 //bool PlayScene::findShortestPath()
 //{
-//	// reset tiles
+//	 reset tiles
 //	resetClosedAndOpen();
 //
 //	Tile* currentTile = m_ship.getTile();
@@ -90,16 +222,16 @@
 //
 //		if (adjacentTiles.size() == 0)
 //		{
-//			//std::cout << "Dead Path" << std::endl;
+//			std::cout << "Dead Path" << std::endl;
 //			return false;
 //		}
 //
 //		std::sort(adjacentTiles.begin(), adjacentTiles.end(), ComparatorByValue());
 //
-//		//std::cout << "next tile ******************************************************" << std::endl;
+//		std::cout << "next tile ******************************************************" << std::endl;
 //		for (size_t i = 0; i < adjacentTiles.size(); i++)
 //		{
-//			//std::cout << "tilestate: " << adjacentTiles[i]->getTileState() << " - ";
+//			std::cout << "tilestate: " << adjacentTiles[i]->getTileState() << " - ";
 //			if (i == 0)
 //			{
 //				currentTile = adjacentTiles[i];
@@ -111,21 +243,21 @@
 //					adjacentTiles[i]->setTileState(TileState::CLOSED);
 //				}
 //
-//				//std::cout << "value chosen: " << std::fixed << std::setprecision(1) << adjacentTiles[i]->getTileValue() << " - " << adjacentTiles[i]->getPosition().x << "," << adjacentTiles[i]->getPosition().y << std::endl;
+//				std::cout << "value chosen: " << std::fixed << std::setprecision(1) << adjacentTiles[i]->getTileValue() << " - " << adjacentTiles[i]->getPosition().x << "," << adjacentTiles[i]->getPosition().y << std::endl;
 //			}
 //			else
 //			{
 //				adjacentTiles[i]->setTileState(TileState::CLOSED);
 //				adjacentTiles[i]->setTileStateLabel("C");
 //				m_pClosed.push_back(adjacentTiles[i]);
-//				//std::cout << "value ignored: " << std::fixed << std::setprecision(1) << adjacentTiles[i]->getTileValue() << " - " << adjacentTiles[i]->getPosition().x << "," << adjacentTiles[i]->getPosition().y << std::endl;
+//				std::cout << "value ignored: " << std::fixed << std::setprecision(1) << adjacentTiles[i]->getTileValue() << " - " << adjacentTiles[i]->getPosition().x << "," << adjacentTiles[i]->getPosition().y << std::endl;
 //			}
 //		}
 //		adjacentTiles.clear();
 //
-//		// ensure a dead end actually ends
+//		 ensure a dead end actually ends
 //
-//		//std::cout << " path length: " << pathlength << " ***********************************************" << std::endl;
+//		std::cout << " path length: " << pathlength << " ***********************************************" << std::endl;
 //		pathlength++;
 //	}
 //
@@ -135,7 +267,7 @@
 //
 //void PlayScene::resetClosedAndOpen()
 //{
-//	// reset tiles
+//	 reset tiles
 //	for (Tile* tile : m_pClosed)
 //	{
 //		tile->setTileState(TileState::OPEN);
@@ -152,7 +284,7 @@
 //	m_pOpen.clear();
 //}
 //
-//// Ship functions ***********************************************
+// Ship functions ***********************************************
 //
 //void PlayScene::m_createShips()
 //{
@@ -189,16 +321,16 @@
 //	Tile* tile = m_getRandomEmptyTile();
 //
 //		
-//	//std::cout << "m_Ship initial position: " << glm::to_string(m_ship.getPosition()) << std::endl;
+//	std::cout << "m_Ship initial position: " << glm::to_string(m_ship.getPosition()) << std::endl;
 //
 //
 //	m_ship.setPosition(tile->getPosition());
 //
-//	//std::cout << "m_Ship altered position: " << glm::to_string(m_ship.getPosition()) << std::endl;
+//	std::cout << "m_Ship altered position: " << glm::to_string(m_ship.getPosition()) << std::endl;
 //
 //	m_pTarget.setPosition(m_ship.getPosition());
 //
-//	//std::cout << "target altered position: " << glm::to_string(m_pTarget.getPosition()) << std::endl;
+//	std::cout << "target altered position: " << glm::to_string(m_pTarget.getPosition()) << std::endl;
 //
 //	tile->setTileState(TileState::START);
 //	tile->setTileStateLabel("S");
@@ -223,7 +355,7 @@
 //	}
 //}
 //
-//// Planet functions ***********************************************
+// Planet functions ***********************************************
 //
 //void PlayScene::m_createPlanet()
 //{
@@ -253,7 +385,7 @@
 //	setGoalLocation(glm::vec2(tile->getGridPosition().x, tile->getGridPosition().y));
 //}
 //
-//// Mine functions ***********************************************
+// Mine functions ***********************************************
 //
 //void PlayScene::m_createMines()
 //{
@@ -301,11 +433,11 @@
 //	}
 //}
 //
-//// Grid functions ***********************************************
+// Grid functions ***********************************************
 //
 //void PlayScene::m_assignNeighbours()
 //{
-//	// assign neighbours
+//	 assign neighbours
 //	for (size_t row = 0; row < m_rowSize; row++)
 //	{
 //		for (size_t col = 0; col < m_colSize; col++)
@@ -399,13 +531,13 @@
 //	return m_grid[randomCol][randomRow];
 //}
 //
-//// ImGui functions ***********************************************
+// ImGui functions ***********************************************
 //
 //void PlayScene::m_ImGuiKeyMap()
 //{
 //	ImGuiIO& io = ImGui::GetIO();
 //
-//	// Keyboard mapping. ImGui will use those indices to peek into the io.KeysDown[] array.
+//	 Keyboard mapping. ImGui will use those indices to peek into the io.KeysDown[] array.
 //	io.KeyMap[ImGuiKey_Tab] = SDL_SCANCODE_TAB;
 //	io.KeyMap[ImGuiKey_LeftArrow] = SDL_SCANCODE_LEFT;
 //	io.KeyMap[ImGuiKey_RightArrow] = SDL_SCANCODE_RIGHT;
@@ -477,15 +609,15 @@
 //
 //void PlayScene::m_updateUI()
 //{
-//	// Prepare Window Frame
+//	 Prepare Window Frame
 //	ImGui::NewFrame();
-//	//ImGui::ShowDemoWindow(); // use for debug purposes
+//	ImGui::ShowDemoWindow(); // use for debug purposes
 //
 //	std::string windowString = "Settings ";
 //
 //	ImGui::Begin(&windowString[0], NULL, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_MenuBar);
 //
-//	// set window to top left corner
+//	 set window to top left corner
 //	ImGui::SetWindowPos(ImVec2(0, 0), true);
 //
 //	/*************************************************************************************************/
@@ -671,7 +803,7 @@
 //
 //	if (ImGui::Button("Find Path"))
 //	{
-//		//std::cout << "**** NEW PATH ****" << std::endl;
+//		std::cout << "**** NEW PATH ****" << std::endl;
 //
 //		findShortestPath();
 //		m_moveAlongPath = false;
@@ -724,7 +856,7 @@
 //		}
 //	}
 //
-//	// Main Window End
+//	 Main Window End
 //	ImGui::End();
 //}
 //
@@ -771,9 +903,9 @@
 //
 //	m_planet.draw();
 //
-//	//m_pLabel->draw();
+//	m_pLabel->draw();
 //
-//	// ImGui Rendering section - DO NOT MOVE OR DELETE
+//	 ImGui Rendering section - DO NOT MOVE OR DELETE
 //	if (m_displayUI)
 //	{
 //		ImGui::Render();
@@ -806,7 +938,7 @@
 //
 //void PlayScene::clean()
 //{
-//	//std::cout << "playscene clean called" << std::endl;
+//	std::cout << "playscene clean called" << std::endl;
 //	delete m_pLabel;
 //
 //	m_pOpen.clear();
@@ -859,7 +991,7 @@
 //				m_displayUI = (m_displayUI) ? false : true;
 //				break;
 //			case SDLK_f:
-//				//std::cout << "**** NEW PATH ****" << std::endl;
+//				std::cout << "**** NEW PATH ****" << std::endl;
 //
 //				findShortestPath();
 //				m_moveAlongPath = false;
