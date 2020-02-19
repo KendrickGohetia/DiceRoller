@@ -18,43 +18,55 @@ void Level1Scene::draw()
 	switch (r1) {
 	case 1:
 		m_pDice1_1->draw();
+		m_pResultLabel1->draw();
 		break;
 	case 2:
 		m_pDice2_1->draw();
+		m_pResultLabel1->draw();
 		break;
 	case 3:
 		m_pDice3_1->draw();
+		m_pResultLabel1->draw();
 		break;
 	case 4:
 		m_pDice4_1->draw();
+		m_pResultLabel1->draw();
 		break;
 	case 5:
 		m_pDice5_1->draw();
+		m_pResultLabel1->draw();
 		break;
 	case 6:
 		m_pDice6_1->draw();
+		m_pResultLabel1->draw();
 		break;
 	}
 
 	switch (r2) {
 	case 1:
 		m_pDice1_2->draw();
+		m_pResultLabel2->draw();
 		break;
 	case 2:
 		m_pDice2_2->draw();
+		m_pResultLabel2->draw();
 		break;
 	case 3:
 		m_pDice3_2->draw();
+		m_pResultLabel2->draw();
 		break;
 	case 4:
+		m_pResultLabel2->draw();
 		m_pDice4_2->draw();
 		break;
 	case 5:
 		m_pDice5_2->draw();
+		m_pResultLabel2->draw();
 		break;
 	case 6:
 		m_pDice6_2->draw();
-		break;
+		m_pResultLabel2->draw();
+		break;		
 	}
 }
 
@@ -174,6 +186,16 @@ void Level1Scene::update()
 			addChild(m_pDice6_2);
 			break;
 		}
+
+		m_pResultLabel1 = new Label(std::to_string(r1), "Consolas", 20, black,
+			glm::vec2(Config::SCREEN_WIDTH * 0.25f, Config::SCREEN_HEIGHT * 0.15f));
+		m_pResultLabel1->setParent(this);
+		addChild(m_pResultLabel1);
+
+		m_pResultLabel2 = new Label(std::to_string(r2), "Consolas", 20, black,
+			glm::vec2(Config::SCREEN_WIDTH * 0.75f, Config::SCREEN_HEIGHT * 0.15f));
+		m_pResultLabel2->setParent(this);
+		addChild(m_pResultLabel2);
 	}
 
 	

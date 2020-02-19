@@ -45,13 +45,18 @@ private:
 	Dice5* m_pDice5_2;
 	Dice6* m_pDice6_1;
 	Dice6* m_pDice6_2;
-	Label* m_pLabelResult1;
-	Label* m_pLabelResult2;
+	Label* m_pResultLabel1;
+	Label* m_pResultLabel2;
 
 
 
 	// private data member
 	glm::vec2 m_mousePosition;
+
+	SDL_Color blue = { 0, 0, 255, 255 };
+	SDL_Color red = { 255, 0, 0, 255 };
+	SDL_Color green = { 0, 255, 0, 255 };
+	SDL_Color black = { 0, 0, 0, 255 };
 
 	int r1, r2;
 	
