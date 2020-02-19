@@ -18,6 +18,7 @@ enum GameObjectType {
 	DICE4,
 	DICE5,
 	DICE6,
+	BACKGROUND,
 	NUM_OF_TYPES
 };
 

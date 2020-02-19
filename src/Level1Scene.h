@@ -11,6 +11,7 @@
 #include "Dice4.h"
 #include "Dice5.h"
 #include "Dice6.h"
+#include "Background.h"
 
 
 class Level1Scene : public Scene
@@ -47,6 +48,7 @@ private:
 	Dice6* m_pDice6_2;
 	Label* m_pResultLabel1;
 	Label* m_pResultLabel2;
+	Background* m_pBackground;
 
 
 
